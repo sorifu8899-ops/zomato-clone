@@ -37,12 +37,13 @@ function writeJsonStore(data) {
 // Supabase client configuration
 let supabase = null;
 const isSupabaseConfigured = () => {
-  return process.env.SUPABASE_URL && process.env.SUPABASE_KEY;
+  return process.env.SUPABASE_URL && (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY);
 };
 
 if (isSupabaseConfigured()) {
   try {
-    supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+    const activeKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY;
+    supabase = createClient(process.env.SUPABASE_URL, activeKey);
     console.log('Supabase client initialized successfully!');
   } catch (error) {
     console.error('Failed to initialize Supabase client:', error);

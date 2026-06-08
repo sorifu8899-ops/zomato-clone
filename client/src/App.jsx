@@ -6,7 +6,7 @@ import Checkout from './pages/Checkout';
 import OrderStatus from './pages/OrderStatus';
 import AdminDashboard from './pages/AdminDashboard';
 
-export const API_BASE_URL = 'http://localhost:5000/api';
+export const API_BASE_URL = '/api';
 
 function App() {
   const navigate = useNavigate();

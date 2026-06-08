@@ -1,17 +1,11 @@
 @echo off
-echo ==========================================
-echo Starting Zomato Clone Project...
-echo Express Server will run on http://localhost:5000
-echo Vite React Client will run on http://localhost:5173
-echo ==========================================
+echo ==================================================
+echo Starting Zomato Clone in Single URL Mode...
+echo.
+echo Both Frontend UI and Backend APIs are running on:
+echo http://localhost:5000
+echo ==================================================
 echo.
 
-:: Start the Express backend server in a new command window
-start "Zomato Backend Server" cmd /k "cd server && npm start"
-
-:: Start the Vite React client dev server in a new command window
-start "Zomato Frontend Client" cmd /k "cd client && npm run dev"
-
-echo Both services are booting up in separate terminals.
-echo Press any key to exit this launcher window...
-pause > null
+cd server
+npm start

@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { db } from './db.js';
 
 dotenv.config();
@@ -254,6 +256,18 @@ app.post('/api/admin/dishes', async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
+});
+
+// Serve static assets from client build folder (single-port deployment)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const clientBuildPath = path.join(__dirname, '../client/dist');
+
+app.use(express.static(clientBuildPath));
+
+// Fallback all other client-side routes to React Router index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
 
 app.listen(PORT, () => {
