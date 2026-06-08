@@ -1,11 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 import { initialRestaurants, initialDishes, initialOffers } from './mock_data.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.join(__dirname, '.env') });
 const DB_FILE_PATH = path.join(__dirname, 'db_store.json');
 
 // Initialize local JSON store if it doesn't exist
