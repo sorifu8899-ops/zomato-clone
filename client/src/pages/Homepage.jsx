@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LocationBar from '../components/LocationBar';
 import { API_BASE_URL } from '../App';
-import { Tag, Clock, Star, MapPin } from 'lucide-react';
+import { Tag, Clock, Star, MapPin, Search } from 'lucide-react';
 
 const foodCuisines = [
   { name: 'Biryani', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=200&auto=format&fit=crop&q=60' },
